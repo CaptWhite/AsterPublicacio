@@ -1,0 +1,286 @@
+:root {
+  --max-width: 1100px;
+  --border-radius: 12px;
+  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
+    "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
+    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+
+  --primary-glow: conic-gradient(
+    from 180deg at 50% 50%,
+    #16abff33 0deg,
+    #0885ff33 55deg,
+    #54d6ff33 120deg,
+    #0071ff33 160deg,
+    transparent 360deg
+  );
+  --secondary-glow: radial-gradient(
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0)
+  );
+
+  --tile-start-rgb: 239, 245, 249;
+  --tile-end-rgb: 228, 232, 233;
+  --tile-border: conic-gradient(
+    #00000080,
+    #00000040,
+    #00000030,
+    #00000020,
+    #00000010,
+    #00000010,
+    #00000080
+  );
+
+  --callout-rgb: 238, 240, 241;
+  --callout-border-rgb: 172, 175, 176;
+  --card-rgb: 180, 185, 188;
+  --card-border-rgb: 131, 134, 135;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+
+    --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
+    --secondary-glow: linear-gradient(
+      to bottom right,
+      rgba(1, 65, 255, 0),
+      rgba(1, 65, 255, 0),
+      rgba(1, 65, 255, 0.3)
+    );
+
+    --tile-start-rgb: 2, 13, 46;
+    --tile-end-rgb: 2, 5, 19;
+    --tile-border: conic-gradient(
+      #ffffff80,
+      #ffffff40,
+      #ffffff30,
+      #ffffff20,
+      #ffffff10,
+      #ffffff10,
+      #ffffff80
+    );
+
+    --callout-rgb: 20, 20, 20;
+    --callout-border-rgb: 108, 108, 108;
+    --card-rgb: 100, 100, 100;
+    --card-border-rgb: 200, 200, 200;
+  }
+}
+
+
+  /*  Global css  */
+  * {
+    box-sizing: border-box;
+  }
+
+  .body {    
+    margin: 0;
+    padding: 0;
+  }
+
+  .hd-row-content {
+    /* Header 2 table*/
+    background-image: url('https://res.cloudinary.com/captwhite-angularadv/image/upload/v1700850212/Aster/Sol.png');
+    background-size: cover;
+  }
+
+  .hd-div-paragraph {
+    /* Header-Paragraph 9 div*/
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    line-height: 120%;
+    text-align: center;
+  }
+
+  .hd-p-paragraph {
+    /* Header-Paragraph 10 p*/
+    margin: 5px;
+  }
+
+  .mn-row-content-headline {   /* Main-headline 2 table*/ 
+    background: #DDD
+  }
+
+  .mn-main-headline {    /* Main-headline 5 h1*/
+    color: #007c89; 
+    font-family: 'Roboto', Tahoma, Verdana, Segoe, sans-serif; 
+    font-size: 30px; font-weight: 700; 
+    text-align: center; 
+    margin: 0; 
+    }
+
+  .mn-row-content-article {   /* Main-article 2 table*/
+    background: #EEE;
+      border-radius: 0; 
+      color: #000000; width: 800px; 
+      margin: 0 auto;
+  }
+
+  .mn-img-article-image{     /* Main-article-image 7 img*/ 
+    width: 100%;
+  }
+
+  .mn-pad-title-h1 {       /* Main-article-title 1 td*/
+    padding-bottom:15px;
+    padding-left:25px;
+    padding-right:20px;
+    padding-top:15px;
+  }
+
+  .mn-h1-article-title{     /* Main-article-image 7 img*/
+    font-family: 'Roboto', Tahoma, Verdana, Segoe, sans-serif; 
+    font-size: 18px; 
+    font-weight: 700; 
+    line-height: 120%; 
+    text-align: center; 
+    margin-top: 0; 
+    margin-bottom: 0; 
+  }
+
+  .mn-anchor-article-title{     /* Main-article-image 7 a*/
+    text-decoration: none; 
+    color: #007c89;
+  }
+
+  .mn-pad-title-p {       /* Main-article-title 1 td*/
+    padding-bottom:5px;
+    padding-left:25px;
+    padding-right:25px;
+  }
+
+  .mn-div-title-p{       /* Main-article-image 7 div*/
+    color:#232323;
+    direction:ltr;
+    font-family:'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:0px;
+    line-height:150%;
+    text-align:left;
+  }
+
+  .mn-paragraph-article-p{     /* Main-article-image 7 a*/
+    margin: 0;
+    white-space: pre-line;
+  }
+
+
+  .ft-paragrapf {
+    /* Main-headline 3 td*/
+    background: #DDD
+  }
+
+  .ft1-div-img {
+    /* Main-article-title 1 td*/
+    max-width: 61px;
+  }
+
+  .ft1-img {
+    /* Main-article-title 1 td*/
+    display: block;
+    height: auto;
+    border: 0;
+    width: 100%;
+  }
+
+  .ft2-pad {
+    /* Main-article-title 1 td*/
+    padding-bottom: 10px;
+    padding-left: 40px;
+    padding-right: 50px;
+    padding-top: 5px
+  }
+
+  .ft2-div-p {
+    /* Main-article-title 1 td*/ 
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 150%;
+    text-align: center;
+  }
+
+
+
+
+  /*  Global css  */
+  a[x-apple-data-detectors] {
+    color: inherit !important;
+    text-decoration: inherit !important;
+  }
+
+  #MessageViewBody a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  p {
+    line-height: inherit
+  }
+
+  .desktop_hide,
+  .desktop_hide table {
+    display: none;
+    max-height: 0px;
+    overflow: hidden;
+  }
+
+  @media (max-width:768px) {
+    .icons-inner {
+      text-align: center;
+    }
+    .mn-div-title-p {
+      font-size:16px;
+    }
+    .icons-inner td {
+      margin: 0 auto;
+    }
+
+    .mobile_hide {
+      display: none;
+    }
+
+    .row-content {
+      width: 100% !important;
+    }
+
+    .stack .column {
+      width: 100%;
+      display: block;
+    }
+
+    .mobile_hide {
+      min-height: 0;
+      max-height: 0;
+      max-width: 0;
+      overflow: hidden;
+      font-size: 0px;
+    }
+
+    .desktop_hide,
+    .desktop_hide table {
+      display: table !important;
+      max-height: none !important;
+    }
+
+    .reverse {
+      display: table;
+      width: 100%;
+    }
+
+    .reverse .column.first {
+      display: table !important;
+    }
+
+    .reverse .column.last {
+      display: table-header-group !important;
+    }
+  }
+
+

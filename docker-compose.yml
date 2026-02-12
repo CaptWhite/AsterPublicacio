@@ -1,0 +1,15 @@
+services:
+  aster-publicacio:
+    image: captwhite/aster-publicacio:latest
+    container_name: aster-publicacio
+    restart: always
+    ports:
+      - "3000:3000"
+    networks:
+      - aster-net
+    env_file:
+      - ./.env
+
+networks:
+  aster-net:
+    driver: bridge

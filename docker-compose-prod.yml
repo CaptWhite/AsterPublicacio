@@ -1,0 +1,24 @@
+services:
+  aster-publicacio:
+    image: captwhite/aster-publicacio:latest
+    container_name: aster-publicacio
+    restart: always
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.publ-http.entrypoints=web"
+      - "traefik.http.routers.publ-http.rule=Host(`publ.captwhite.com`)"
+      - "traefik.http.routers.publ-http.middlewares=redirect-to-https@docker"
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+      #
+      - "traefik.http.routers.publ.entrypoints=websecure"
+      - "traefik.http.routers.publ.rule=Host(`publ.captwhite.com`)"
+      - "traefik.http.routers.publ.tls=true"
+      - "traefik.http.routers.publ.tls.certresolver=myresolver"
+      - "traefik.http.services.publ.loadbalancer.server.port=3000"
+    networks:
+      - webnet-astro
+
+networks:
+  webnet-astro:
+    external: true
+
