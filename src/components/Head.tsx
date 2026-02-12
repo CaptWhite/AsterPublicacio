@@ -14,7 +14,7 @@ export const Head = ({ id, date }: Props) => {
         <tr>
           <td>
             <table style={{ 
-                    backgroundImage: "url('https://res.cloudinary.com/captwhite-angularadv/image/upload/v1700850212/Aster/Sol.png')", 
+                    background: "https://res.cloudinary.com/captwhite-angularadv/image/upload/v1700850212/Aster/Sol.png)", 
                     backgroundSize: 'cover',
             }}>
               <tbody>
