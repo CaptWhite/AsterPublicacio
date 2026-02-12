@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  basePath: '/aster-publicacio',
   output: 'standalone',
   images: {
     remotePatterns: [

@@ -3,6 +3,9 @@ services:
     image: captwhite/aster-publicacio:latest
     container_name: aster-publicacio
     restart: always
+    env_file:
+      - ./.env
+
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.publ-http.entrypoints=web"
