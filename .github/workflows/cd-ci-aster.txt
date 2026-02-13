@@ -8,8 +8,47 @@ on:
 env:
   DOCKERHUB_USERNAME: captwhite
   IMAGE_NAME: captwhite/aster-publicacio
+
 jobs:
+  ci_build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⬇️ Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🛠️ Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 📦 Install dependencies and Lint
+        run: |
+          npm ci
+          npm run lint
+
+      - name: 🔑 Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ env.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: ⚙️ Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: 🏗️ Build and Push Docker Image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./DockerfileAster
+          push: true
+          tags: |
+            ${{ env.IMAGE_NAME }}:latest
+            ${{ env.IMAGE_NAME }}:${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
   deploy:
+    needs: ci_build
     runs-on: ubuntu-latest
     steps:
       - name: ⬇️ Checkout code
@@ -21,8 +60,8 @@ jobs:
           host: ${{ secrets.SSH_HOST_ASTER }}
           username: ${{ secrets.SSH_USER_ASTER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: docker-compose-prod.yml
-          target: /home/${{ secrets.SSH_USER_ASTER }}/workspaces/aster-publicacio
+          source: docker-compose-aster.yml
+          target: /opt/workspaces/aster-publicacio
 
       - name: 🚀 Deploy containers and restart service
         uses: appleboy/ssh-action@v1.0.1
@@ -32,7 +71,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             echo "Conexión SSH establecida, iniciando despliegue."
-            cd /home/${{ secrets.SSH_USER_ASTER }}/workspaces/aster-publicacio
+            cd /opt/workspaces/aster-publicacio
 
             echo "Creando fichero .env en el servidor..."
             echo "PRIVATE_KEY=${{ secrets.APPL_PRIVATE_KEY }}" > .env
@@ -42,8 +81,8 @@ jobs:
             echo "Asegurando que la red de Docker existe..."
             docker network inspect webnet-astro >/dev/null 2>&1 || docker network create webnet-astro
 
-            echo "Actualizando y reiniciando contenedores..."
-            docker compose --file docker-compose-prod.yml pull
-            docker compose --file docker-compose-prod.yml down
-            docker compose --file docker-compose-prod.yml up -d
+            echo "Actualizando y reiniciando contenedores..."            
+            docker compose --file docker-compose-aster.yml down
+            docker compose --file docker-compose-aster.yml pull
+            docker compose --file docker-compose-aster.yml up -d
             echo "✅ Despliegue de contenedores finalizado y levantado."
