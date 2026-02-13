@@ -48,6 +48,7 @@ jobs:
           cache-to: type=gha,mode=max
 
   deploy:
+    needs: ci_build
     runs-on: ubuntu-latest
     steps:
       - name: ⬇️ Checkout code
