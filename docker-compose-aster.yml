@@ -1,0 +1,14 @@
+services:
+  aster-publicacio:
+    image: captwhite/aster-publicacio:latest
+    container_name: aster-publicacio
+    restart: always
+    env_file:
+      - ./.env
+    networks:
+      - proxy_network
+
+networks:
+  proxy_network:
+    external: true
+
