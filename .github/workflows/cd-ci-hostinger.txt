@@ -57,21 +57,21 @@ jobs:
       - name: 📤 Sync docker-compose.yml file to VPS
         uses: appleboy/scp-action@v0.1.4
         with:
-          host: ${{ secrets.SSH_HOST_ASTER }}
-          username: ${{ secrets.SSH_USER_ASTER }}
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: docker-compose-prod.yml
-          target: /home/opt/workspaces/aster-publicacio/
+          target: /home/${{ secrets.SSH_USER }}/workspaces/aster-publicacio/
 
       - name: 🚀 Deploy containers and restart service
         uses: appleboy/ssh-action@v1.0.1
         with:
-          host: ${{ secrets.SSH_HOST_ASTER }}
-          username: ${{ secrets.SSH_USER_ASTER }}
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             echo "Conexión SSH establecida, iniciando despliegue."
-            cd /home/${{ secrets.SSH_USER_ASTER }}/workspaces/aster-publicacio
+            cd /home/${{ secrets.SSH_USER }}/workspaces/aster-publicacio
 
             echo "Creando fichero .env en el servidor..."
             echo "PRIVATE_KEY=${{ secrets.APPL_PRIVATE_KEY }}" > .env
