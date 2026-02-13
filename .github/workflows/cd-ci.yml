@@ -61,7 +61,7 @@ jobs:
           username: ${{ secrets.SSH_USER_ASTER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: docker-compose-aster.yml
-          target: /home/${{ secrets.SSH_USER_ASTER }}/workspaces/aster-publicacio
+          target: /opt/workspaces/aster-publicacio
 
       - name: 🚀 Deploy containers and restart service
         uses: appleboy/ssh-action@v1.0.1
@@ -71,7 +71,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             echo "Conexión SSH establecida, iniciando despliegue."
-            cd /home/${{ secrets.SSH_USER_ASTER }}/workspaces/aster-publicacio
+            cd /opt/workspaces/aster-publicacio
 
             echo "Creando fichero .env en el servidor..."
             echo "PRIVATE_KEY=${{ secrets.APPL_PRIVATE_KEY }}" > .env
