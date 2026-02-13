@@ -10,8 +10,6 @@ env:
   IMAGE_NAME: captwhite/aster-publicacio
 
 jobs:
-
-
   deploy:
     runs-on: ubuntu-latest
     steps:
