@@ -61,7 +61,7 @@ jobs:
           username: ${{ secrets.SSH_USER_ASTER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: docker-compose-prod.yml
-          target: /home/opt/workspaces/aster-publicacio/
+          target: /opt/workspaces/aster-publicacio/
 
       - name: 🚀 Deploy containers and restart service
         uses: appleboy/ssh-action@v1.0.1
