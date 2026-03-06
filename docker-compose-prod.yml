@@ -17,7 +17,7 @@ services:
       - "traefik.http.routers.publ.rule=Host(`publ.captwhite.com`)"
       - "traefik.http.routers.publ.tls=true"
       - "traefik.http.routers.publ.tls.certresolver=myresolver"
-      - "traefik.http.services.publ.loadbalancer.server.port=3000"
+      - "traefik.http.services.publ.loadbalancer.server.port=4321"
     networks:
       - webnet-astro
 

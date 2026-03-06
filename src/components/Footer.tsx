@@ -1,9 +1,6 @@
 
 //import Category from "./Category.astro";
 
-import Link from "next/link"
-import Image from 'next/image';
-
 //  <!-- FOOTER -->
 //  <!-- <Category category='' /> --> 
 
@@ -26,8 +23,8 @@ export const Footer = () => {
 											<tr>
 												<td>
 													<div>
-														<Link href="https://www.aster.cat/forms/nousoci" style={{color:'#ffffff', textDecoration:'none'}} className="mn-h1-article-title" target="_blank">Fes-te soci d'Aster
-														</Link>
+														<a href="https://www.aster.cat/forms/nousoci" style={{color:'#ffffff', textDecoration:'none'}} className="mn-h1-article-title" target="_blank">Fes-te soci d'Aster
+														</a>
 													</div>
 												</td>
 											</tr>

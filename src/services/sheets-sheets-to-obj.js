@@ -1,7 +1,7 @@
 
 import { google } from 'googleapis'
-const PRIVATE_KEY = process.env.PRIVATE_KEY;
-const CLIENT_EMAIL = process.env.CLIENT_EMAIL;
+const PRIVATE_KEY = process.env.PRIVATE_KEY || import.meta.env?.PRIVATE_KEY;
+const CLIENT_EMAIL = process.env.CLIENT_EMAIL || import.meta.env?.CLIENT_EMAIL;
 
 /**
  * AUTHENTICATE GOOGLE ******************************************************* 

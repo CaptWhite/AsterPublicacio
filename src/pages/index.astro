@@ -1,0 +1,39 @@
+---
+import { getItem } from '../services/getDynamics';
+import { CallWeb } from '../components/CallWeb';
+import { Head } from '../components/Head';
+import { Main1 } from '../components/Main1';
+import { Footer } from '../components/Footer';
+
+// Esto se ejecuta en el SERVIDOR (o en build time), no en el navegador
+const data = await getItem();
+const { id, date, widthPhoto, news } = data;
+
+// Nota: Importamos el CSS para que Astro lo gestione
+import '../app/styles.css';
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ASTER - Agrupació Astronòmica de Barcelona - Newsletter</title>
+    <!-- Astro inyectará el CSS aquí automáticamente -->
+</head>
+<body style="margin: 0; padding: 0;">
+    <table align="center" width="800px" style="border-collapse: collapse;">
+        <tbody>
+            <tr>
+                <td>
+                    <CallWeb id={id} />
+                    <Head id={id} date={date} />
+                    <Main1 news={news} widthPhotoDefault={widthPhoto} />
+                    <Footer />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

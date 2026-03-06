@@ -1,7 +1,5 @@
 
-import Link from 'next/link';
 import type { News, Reverse } from '../services/interfaces/newsletter'
-//import Image from 'next/image';
 
 
 interface Props {
@@ -30,9 +28,9 @@ export const Main3Left = ({news, reverse, widthPhoto}: Props) => {
                     <td align="center">
                       <div >
                         <div>
-                          <Link target="_blank" href={ isOneDrive ? `/newsletter/photo.html?img=${url}` : `${url}`} rel="noreferrer noopener">
-                            <img src={image} alt={title} width={266.666666666663}  className="mn-img-article-image"/>
-                          </Link>
+                          <a target="_blank" href={ isOneDrive ? `/newsletter/photo.html?img=${url}` : `${url}`} rel="noreferrer noopener">
+                            <img src={image} alt={title} width={266.666666666663}  className="mn-img-article-image" referrerpolicy="no-referrer"/>
+                          </a>
                         </div>
                       </div>
                     </td>

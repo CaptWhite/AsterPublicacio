@@ -1,4 +1,4 @@
-# Dockerfile para una aplicación Next.js
+# Dockerfile para una aplicación Astro (SSR con Node)
 
 # --- Dependencias ---
 FROM node:20-alpine AS deps
@@ -11,24 +11,31 @@ FROM node:20-alpine AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-ARG NEXT_PUBLIC_BASE_PATH
-ENV NEXT_PUBLIC_BASE_PATH=${NEXT_PUBLIC_BASE_PATH}
+
+# Argumentos de construcción (si necesitas alguno)
+# ARG ASTRO_PUBLIC_API_URL
+# ENV ASTRO_PUBLIC_API_URL=${ASTRO_PUBLIC_API_URL}
+
 RUN npm run build
 
 # --- Producción ---
 FROM node:20-alpine AS runner
 WORKDIR /app
 ENV NODE_ENV production
+ENV HOST=0.0.0.0
+ENV PORT=4321
 
+# Usar dumb-init para gestionar los procesos de Node correctamente
 RUN apk update && apk upgrade && apk add --no-cache dumb-init
 
-# Copia los artefactos de la build
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/.next/standalone ./
-COPY --from=builder /app/.next/static ./.next/static
+# Copiar artefactos de Astro (con adaptador de Node)
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
 
-EXPOSE 3000
+EXPOSE 4321
 
 ENTRYPOINT ["dumb-init", "--"]
-CMD ["node", "server.js"]
+
+# El adaptador de Node genera un archivo entry.mjs en dist/server/
+CMD ["node", "./dist/server/entry.mjs"]
