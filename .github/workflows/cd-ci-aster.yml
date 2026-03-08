@@ -51,7 +51,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: ⬇️ Checkout code
-        uses: checkout@v4
+        uses: actions/checkout@v4
 
       - name: 📤 Sync docker-compose.yml file to VPS
         uses: appleboy/scp-action@v0.1.4
