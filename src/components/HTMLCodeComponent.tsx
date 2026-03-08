@@ -7,7 +7,8 @@ const HTMLCodeComponent: React.FC = () => {
   useEffect(() => {
     const fetchHTML = async () => {
       try {
-        const response = await fetch('/');
+        // Usamos el path relativo al origen de la base de Astro
+        const response = await fetch('./');
         const html = await response.text();
         
         // Aplicar limpieza Regex

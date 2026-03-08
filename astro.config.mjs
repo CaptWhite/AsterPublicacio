@@ -6,6 +6,7 @@ import node from '@astrojs/node';
 export default defineConfig({
   integrations: [react()],
   output: 'server',
+  base: '/aster-publicacio',
   adapter: node({
     mode: 'standalone'
   }),
