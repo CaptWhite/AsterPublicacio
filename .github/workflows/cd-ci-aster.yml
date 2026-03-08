@@ -1,4 +1,4 @@
-name: CI/CD Pipeline - Next.js Docker
+name: CI/CD Pipeline - Astro Docker
 
 on:
   push:
@@ -51,7 +51,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: ⬇️ Checkout code
-        uses: actions/checkout@v4
+        uses: checkout@v4
 
       - name: 📤 Sync docker-compose.yml file to VPS
         uses: appleboy/scp-action@v0.1.4
@@ -75,13 +75,12 @@ jobs:
             echo "Creando fichero .env en el servidor..."
             echo "PRIVATE_KEY=${{ secrets.APPL_PRIVATE_KEY }}" > .env
             echo "CLIENT_EMAIL=${{ secrets.APPL_CLIENT_EMAIL }}" >> .env
-            # Añade una línea `echo` por cada variable de entorno que necesites
 
             echo "Asegurando que la red de Docker existe..."
-            docker network inspect webnet-astro >/dev/null 2>&1 || docker network create webnet-astro
+            docker network inspect proxy_network >/dev/null 2>&1 || docker network create proxy_network
 
             echo "Actualizando y reiniciando contenedores..."            
             docker compose --file docker-compose-aster.yml down
             docker compose --file docker-compose-aster.yml pull
             docker compose --file docker-compose-aster.yml up -d
-            echo "✅ Despliegue de contenedores finalizado y levantado."
+            echo "✅ Despliegue de Astro finalizado y levantado."

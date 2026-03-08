@@ -1,4 +1,4 @@
-# Dockerfile para una aplicación Next.js
+# Dockerfile para una aplicación Astro (SSR con Node) - ASTER
 
 # --- Dependencias ---
 FROM node:20-alpine AS deps
@@ -12,6 +12,10 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
+# Argumentos de construcción (si necesitas alguno)
+# ARG ASTRO_PUBLIC_API_URL
+# ENV ASTRO_PUBLIC_API_URL=${ASTRO_PUBLIC_API_URL}
+
 RUN npm run build
 
 # --- Producción ---
@@ -24,7 +28,7 @@ ENV PORT=4321
 # Usar dumb-init para gestionar los procesos de Node correctamente
 RUN apk update && apk upgrade && apk add --no-cache dumb-init
 
-# Copia los artefactos de la build
+# Copiar artefactos de Astro (con adaptador de Node)
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
