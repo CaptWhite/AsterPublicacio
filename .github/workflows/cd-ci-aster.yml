@@ -83,4 +83,5 @@ jobs:
             docker compose --file docker-compose-aster.yml down
             docker compose --file docker-compose-aster.yml pull
             docker compose --file docker-compose-aster.yml up -d
-            echo "✅ Despliegue de Astro finalizado y levantado."
+            echo "✅ Despliegue de Astro finalizado y levantado." 
+            
