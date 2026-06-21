@@ -54,7 +54,7 @@ export const Footer = () => {
 												<td  align="center">
 													<div>
 														<div className="ft1-div-img">
-														<img src="https://www.aster.cat//images/codi-etic.jpg" className="ft1-img" width={61} height={46}
+														<img src="https://assets.ipzmarketing.com/data/a7f1d3c410e5bddc2e0756c64826495a63a20b21/media_files/3/original/codiEtic1.jpg" className="ft1-img" width={61} height={46}
 																alt="Aster, Agrupació Astronòmica de Barcelona, declarada Entitat d'utilitat pública segons resolució del Departament de Justícia de la Generalitat de Catalunya, número JUS/3230/2009 del 12/11/2009"
 																title="Aster, Agrupació Astronòmica de Barcelona, declarada Entitat d'utilitat pública segons resolució del Departament de Justícia de la Generalitat de Catalunya, número JUS/3230/2009 del 12/11/2009"/>
 														</div>
