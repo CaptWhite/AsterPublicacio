@@ -13,6 +13,7 @@ const HTMLCodeComponent: React.FC = () => {
         
         // Aplicar limpieza Regex
         let text_ = html.replace(/\<\!--\[if[\s\S]*?\]\>\<\!\[endif\]--\>\n?/g, '');
+        text_ = text_.replace(/(AsterPublicació)\s+\s*<!-- -->\s*/g, '$1'+' ');
         text_ = text_.replace(/\s*<!-- -->\s*/g, '');
         text_ = text_.replace(/\<\!--[\s\S]*?--\>\n?/g, '');
         text_ = text_.replace(/\<script\>[\s\S]*?\<\/script\>/g, '');
