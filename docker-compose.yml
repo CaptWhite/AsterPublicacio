@@ -4,7 +4,7 @@ services:
     container_name: aster-publicacio
     restart: always
     ports:
-      - "4321:4321"
+      - "9050:4321"
     networks:
       - aster-net
     env_file:
