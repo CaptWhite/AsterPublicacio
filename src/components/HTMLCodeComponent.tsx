@@ -17,6 +17,9 @@ const HTMLCodeComponent: React.FC = () => {
         text_ = text_.replace(/\s*<!-- -->\s*/g, '');
         text_ = text_.replace(/\<\!--[\s\S]*?--\>\n?/g, '');
         text_ = text_.replace(/\<script\>[\s\S]*?\<\/script\>/g, '');
+        text_ = text_.replace(/(<span style="white-space:pre-line">)([\s\S]*?)(<\/span>)/g, (_match, openingTag, content, closingTag) =>
+          openingTag + content.replace(/\n/g, '<p>') + closingTag
+        );
         const cleanedText = text_.replace(/\<script src=[\s\S]*?\<\/script\>/g, '');
 
         setText(cleanedText);
