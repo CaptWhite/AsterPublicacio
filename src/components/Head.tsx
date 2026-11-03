@@ -12,7 +12,7 @@ export const Head = ({ id, date }: Props) => {
         <tr>
           <td>
             <div>
-              <img src="https://files.aster.org/Folder1/Newsletter.png"
+              <img src="https://lh3.googleusercontent.com/pw/AP1GczMwZlJmMBz5_LR7TliFJmFu0UUh6kspLROOuiuabat0d9-64xrmRSbTzNn9KTClqdBG26tfqmN4MWsBIYO4KGyzUk6Byt2-0w-4D4YJe_KeYk3SsTJ2e9aSN-hSERKQ6I1i14xTt3kmxw7WBnFpWMWE=w782-h336-s-no-gm?authuser=1"
                         alt="imagen de aster" width="100%"/>
             </div>
             <div className="hd-div-paragraph">
