@@ -18,10 +18,10 @@ const HTMLCodeComponent: React.FC = () => {
         text_ = text_.replace(/\<\!--[\s\S]*?--\>\n?/g, '');
         text_ = text_.replace(/\<script\>[\s\S]*?\<\/script\>/g, '');
         text_ = text_.replace(/(<span style="white-space:pre-line">)([\s\S]*?)(<\/span>)/g, (_match, openingTag, content, closingTag) =>
-          openingTag + content.replace(/\n/g, '<p>') + closingTag
+          openingTag + content.replace(/\n/g, '<p style="margin-top: 4px;margin-bottom: 4px;">') + closingTag
         );
         const cleanedText = text_.replace(/\<script src=[\s\S]*?\<\/script\>/g, '');
-
+      
         setText(cleanedText);
         setMessage('Codi HTML obtingut i optimitzat correctament');
       } catch (err) {
