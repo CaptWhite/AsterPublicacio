@@ -52,7 +52,7 @@ const HTMLCodeComponent: React.FC = () => {
                 <tr>
                   <td>
                     <div className="mn-main-headline" style={{ padding: '20px', maxWidth: '800px', margin: 'auto' }}>
-                      <h2 align="center">Codi Font HTML</h2>
+                      <h2>Codi Font HTML</h2>
                       <textarea
                         value={text}
                         readOnly
